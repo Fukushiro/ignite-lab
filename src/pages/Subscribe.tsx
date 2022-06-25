@@ -3,7 +3,7 @@ import React, { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
 import { useCreateSubscriberMutation } from "../graphql/generated";
-
+import imgUrl from "../assets/print.png";
 // import { Container } from './styles';
 
 const Subscribe: React.FC = () => {
@@ -75,12 +75,12 @@ const Subscribe: React.FC = () => {
               disabled={loading}
               className="mt-4 bg-green-500 uppercase py-4 rounded font-bold text-sm hover:bg-green-700 transition-colors disabled:opacity-50 "
             >
-              Grarntir minha vaga
+              Garantir minha vaga
             </button>
           </form>
         </div>
       </div>
-      <img src="/src/assets/print.png" alt="" className="mt-10" />
+      <img src={imgUrl} alt="" className="mt-10" />
     </div>
   );
 };
