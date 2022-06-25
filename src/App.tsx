@@ -1,32 +1,18 @@
-import { gql, useQuery } from "@apollo/client";
-import { useEffect } from "react";
+import { ApolloProvider } from "@apollo/client";
+import { BrowserRouter } from "react-router-dom";
 import { client } from "./lib/apollo";
-interface Lesson {
-  id: string;
-  title: string;
-}
-function App() {
-  const GET_LESSONS_QUERY = gql`
-    query {
-      lessons {
-        id
-        title
-      }
-    }
-  `;
-  const { data } = useQuery<{ lessons: Array<Lesson> }>(GET_LESSONS_QUERY);
-  // useEffect(() => {
-  //   client.query({ query: GET_LESSONS_QUERY }).then((res) => {
-  //     console.log(res);
-  //   });
-  // }, []);
+import Event from "./pages/Event";
+import RouterManager from "./RouterManager";
 
+function App() {
   return (
-    <ul>
-      {data?.lessons.map((lesson, index) => {
-        return <li key={index}>{lesson.title}</li>;
-      })}
-    </ul>
+    <div>
+      <ApolloProvider client={client}>
+        <BrowserRouter>
+          <RouterManager />
+        </BrowserRouter>
+      </ApolloProvider>
+    </div>
   );
 }
 
